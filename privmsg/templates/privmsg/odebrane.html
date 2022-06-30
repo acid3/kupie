@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+    Odebrane wiadomości
+{% endblock title %}
+{% block main_content %}
+    <br />
+    <br />
+    <a href="/msg/napisz/">Napisz wiadomość</a>
+    <br />
+    <br />
+    <br />
+    <br />
+    {% for obj in msgrcv %}
+        {{ obj.sender_id }}&nbsp-&nbsp{{ obj.sendDate.date }}&nbsp-&nbsp{{ obj.sendDate.time }}
+        <br />
+        {{ obj.msg }}
+        <br />
+        <hr />
+    {% endfor %}
+{% endblock main_content %}

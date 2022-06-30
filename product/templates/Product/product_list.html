@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    Lista wszystkich produktów
+{% endblock title %}
+{% block main_content %}
+    <ul style="list-style-type: none; padding: 0">
+        {% for obj in product_list %}
+            {# TODO linijka poniżej do usunięcia #}
+            {% comment %} <li onclick="location.href='/motoryzacja/detail/{{ obj.pk }}';" style="cursor: pointer"> {% endcomment %}
+            <li onclick="location.href='/products/detail/{{ obj.slug }}';"
+                style="cursor: pointer">
+                <div class="mainLiDiv">
+                    <div class="titleListDiv">
+                        <h3>{{ obj.title }}</h3>
+                    </div>
+                    <div class="listLiPrice">
+                        <p>
+                            <strong>{{ obj.price }}&nbsp;zł</strong>
+                        </p>
+                    </div>
+                    <div style="clear: both">
+                        {{ obj.from_state }},&nbsp{{ obj.from_city }}
+                    </br>
+                    {{ obj.publication_date }}
+                </div>
+            </div>
+        </li>
+        <hr />
+    {% endfor %}
+</ul>
+{% endblock main_content %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+
+{% block main_content %}
+
+    {# TODO: lista ILUŚ tam najnowszych wpisów#}
+
+    {#    <ul style="list-style-type: none; padding: 0">#}
+    {#        {% for obj in object_list %}#}
+    {#                <li onclick="location.href='/detail/{{ obj.pk }}';" style="cursor: pointer">#}
+    {#                    <div style="clear: both; margin-left: 5px">#}
+    {#                        <div style="float: left; min-width: 75%; margin-left: 0; position: relative;">#}
+    {#                            <h3>{{ obj.title }}</h3>#}
+    {#                        </div>#}
+    {#                        <div style="float: right; min-width: 15%; text-align: right; margin-right: 5px; position: relative;">#}
+    {#                            <strong><p>{{ obj.price }}&nbsp;zł</p></strong>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div style="clear: both">{{ obj.skad_woj }},&nbsp{{ obj.skad_miasto }}</div>#}
+    {#                </li>#}
+    {#            <hr/>#}
+    {#        {% endfor %}#}
+    {#    </ul>#}
+
+    HOME VIEW TEMPORARY
+
+    <p id="demo"></p>
+
+    <script>
+        document.getElementById("demo").innerHTML =
+            "Browser inner window width: " + window.innerWidth + "px<br>" +
+            "Browser inner window height: " + window.innerHeight + "px";
+    </script>
+
+{% endblock main_content %}

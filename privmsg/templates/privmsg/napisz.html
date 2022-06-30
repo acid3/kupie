@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    Napisz wiadomość
+{% endblock title %}
+{% block main_content %}
+    <form method="post" class="form">
+        {% csrf_token %}
+        do kogo : {{ user_form.reciver_id }}
+        <br />
+        treść : {{ user_form.msg }}
+
+        <input type="submit" value="DODAJ" />
+        <br />
+    </form>
+{% endblock main_content %}

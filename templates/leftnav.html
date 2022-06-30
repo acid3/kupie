@@ -1,0 +1,24 @@
+{% block left_navbar %}
+    {% if user.is_authenticated %}
+        <h1>Witaj, {{ user.username }}</h1>
+    {% else %}
+        <h1>Witaj, Gościu</h1>
+    {% endif %}
+    <p>
+        tutaj będzie jakieś menu
+    </p>
+    {% if user.is_authenticated %}
+        <div class="lmAddProdButton">
+            <a class="addProdButtonA" href="/products/dodaj/">
+                <span class="addProdButtonSpan">Dodaj produkt</span>
+            </a>
+        </div>
+        <br/>
+        <br/>
+        <div class="lmAddProdButton">
+            <a class="addProdButtonA" href="/msg/odebrane/">
+                <span class="addProdButtonSpan">Wiadomości</span>
+            </a>
+        </div>
+    {% endif %}
+{% endblock left_navbar %}

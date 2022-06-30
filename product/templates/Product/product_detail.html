@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+    Widok szczegółowy
+{% endblock title %}
+{% block main_content %}
+    <div class="mainDetailDiv">
+        {% comment %} <div class="picDiv">
+            {% if product_detail.thumb %}
+                <img src="{{ product_detail.thumb.url }}" alt="miniaturka" style="width: 120px; height: 120px;">
+            {% else %}
+                <img src="/static/images/wentylator.jpg" alt="miniaturka" style="width: 120px; height: 120px;">
+            {% endif %}
+        </div> {% endcomment %}
+        <div class="picDiv">
+            {% if product_detail.thumb %}
+            </img src="{{ product_detail.thumb.url }}" alt="miniaturka" class="imgSrc" >
+        {% else %}
+        </img src="/static/images/wentylator.jpg" alt="miniaturka" >
+    {% endif %}
+</div>
+<div class="titleDiv">
+    <h1>{{ product_detail.title }}</h1>
+    <p>
+        <strong>Author:</strong> &nbsp<a href="">{{ product_detail.author }}</a>
+    </p>
+    <p>
+        <strong>Dodano :</strong>&nbsp{{ product_detail.publication_time.date }}
+</p>
+</div>
+<div class="priceDiv">
+    <p style="font-size: medium; font-weight: bold;align-content: center;">
+        Cena do:
+    </p>
+    <p style="text-align: center; font-size: xx-large;font-weight: bolder;">
+        {{ product_detail.price }}&nbsp;zł
+    </p>
+    {# TODO: zrobić odnośnik do strony kontaktowej #}
+    <button onclick="location.href='/products/kontakt/{{ product_detail.slug }}'"
+            style="width: 100%;
+                   height: 60%;
+                   background-color: red;
+                   color: yellow;">
+        Kontakt
+    </button>
+</div>
+<br />
+<br />
+<div style="clear:both; width: 100%">
+    <p>
+        <strong>Opis:</strong>
+    </p>
+    <p>
+        {{ product_detail.text }}
+    </p>
+</div>
+<hr style="width: 80%; horiz-align: center">
+{% comment %} {% if product_detail.category.category_name == 'Telefony' %}
+            <div>
+                {{ product_detail.category }}<br />
+                <b>Dodatkowe informacje :</b><br>
+                Pojemność - {{ produktcar.pojemnosc }}<br>
+                Kolor - {{ produktcar.colour }}<br>
+                Data dodania - {{ produktcar.publication_date }}<br>
+            </div>
+        {% else %}
+            To jest kategoria <b>{{ product_detail.category }}</b>
+{% endif %} {% endcomment %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+.mainLiDiv {
+    clear: both;
+    margin-left: 5px
+}
+
+.titleListDiv {
+    float: left;
+    /*width: 75%;*/
+    min-width: 75%;
+    margin-left: 0;
+    position: relative;
+}
+
+.listLiPrice {
+    float: right;
+    /*width: 15%;*/
+    min-width: 15%;
+    text-align: right;
+    margin-right: 5px;
+    position: relative;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8" />
+        {% load static %}
+        <link rel="shortcut icon"
+              type="image/png"
+              href="{% static 'images/favicon.ico' %}"/>
+        {# ładowanie czcionek #}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Brygada+1918&display=swap"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"/>
+        {# ładowanie stylów CSS #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}" />
+        <title>
+            {% block title %}
+                :O :O :O Something wrong !!
+            {% endblock title %}
+        | Kupię, przyjmę, odziedziczę...</title>
+    </head>
+    <body>
+        {# <div class="headerDiv">{% block main_header %}{% endblock %}</div> #}
+        <div class="headerDiv">{% include 'header.html' %}</div>
+        <div class="infoBar">{% include 'navbar.html' %}</div>
+        <div style="max-height: 100%;">
+            <div class="leftNavBar">{% include 'leftnav.html' %}</div>
+            <div class="mainContent main_li">
+                {% block main_content %}
+                {% endblock main_content %}
+            </div>
+            <div class="advBar">
+                {% block adv_content %}
+                    tu może być reklama
+                {% endblock adv_content %}
+            </div>
+            <div class="footerDiv">{% include 'footer.html' %}</div>
+        </div>
+    </body>
+</html>

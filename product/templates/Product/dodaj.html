@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+    Dodaj produkt
+{% endblock title %}
+{% block main_content %}
+    <section>
+        <div id="page-wrapper" class="sign-in-wrapper">
+            <div class="graphs">
+                <div class="sign-in-form">
+                    <div class="signin">
+                        <form method="post" class="form">
+                            {% csrf_token %}
+                            title : {{ user_form.title }}
+                            <br />
+                            kategoria : {{ user_form.category }}
+                            <br />
+                            text :{{ user_form.text }}
+                            <br />
+                            województwo : {{ user_form.from_state }}
+                            <br />
+                            miasto : {{ user_form.from_city }}
+                            <br />
+                            price :{{ user_form.price }}
+                            <br />
+                            user :{{ user_form.author }}
+                            <br />
+
+                        <input type="submit" value="DODAJ" />
+                        <br />
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--footer section start-->
+    <footer class="diff">
+        <p class="text-center">
+            futer
+        </p>
+    </footer>
+    <!--footer section end-->
+</section>
+{% endblock main_content %}

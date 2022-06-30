@@ -1,0 +1,36 @@
+.mainDetailDiv {
+    /*background-color: lawngreen;*/
+    background-color: azure;
+    margin: 10px;
+    min-height: 550px;
+}
+
+.innerDiv {
+
+}
+
+.priceDiv {
+    float: right;
+    /*background-color: #a4787d;*/
+    position: relative;
+    min-width: 25%
+}
+
+.picDiv {
+    float: left;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 10px
+}
+
+.imgSrc {
+    width : 120px;
+    height: 120px;
+}
+
+.titleDiv {
+    float: left;
+    position: relative;
+    width: 40%
+}

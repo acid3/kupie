@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+    Zaloguj się lub zarejestruj
+{% endblock title %}
+{% block main_content %}
+    <section>
+        <div id="page-wrapper" class="sign-in-wrapper">
+            <div class="graphs">
+                <div class="sign-in-form">
+                    <div class="sign-in-form-top">
+                        <h1>Zaloguj</h1>
+                    </div>
+                    <div class="signin">
+                        <form method="post">
+                            {% csrf_token %}
+                            <!-- form variable -->
+                            {{ form.as_p }}
+                            <input type="submit" name="sumbit"/>
+                        </form>
+                </div>
+                <div class="new_people">
+                    <h2>Nie masz konta ???</h2>
+                    <a href="/accounts/register">Zarejestruj się</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock main_content %}

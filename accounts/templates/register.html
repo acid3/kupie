@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+    Zaloguj się lub zarejestruj
+{% endblock title %}
+{% block main_content %}
+    <section>
+        <div id="page-wrapper" class="sign-in-wrapper">
+            <div class="graphs">
+                <div class="sign-in-form">
+                    <div class="sign-in-form-top">
+                        <h1>Zarejestruj się</h1>
+                    </div>
+                    <div class="signin">
+                        <form method="post" class="form">
+                            {% csrf_token %}
+                            IMIE : {{ user_form.first_name }}
+                            <br />
+                            NAZWISKO :{{ user_form.last_name }}
+                            <br />
+                            EMAIL :{{ user_form.email }}
+                            <br />
+                            NAZWA UŻYTKOWNIKA :{{ user_form.username }}
+                            <br />
+                            HASŁO :{{ user_form.password }}
+                            <br />
+                            czy staff: {{ user_form.is_staff }}
+                            <br />
+                        <input type="submit" value="Register" />
+                    </form>
+                </div>
+                <div class="new_people">
+                    <h2>Masz konto ?</h2>
+                    <a href="/accounts/login">Zaloguj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock main_content %}
