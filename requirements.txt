@@ -1,4 +1,4 @@
-asgiref==3.5.2
+asgiref==3.4.1
 certifi==2022.6.15
 chardet==4.0.0
 Django==3.2.3
