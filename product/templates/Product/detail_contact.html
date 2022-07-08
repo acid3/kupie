@@ -6,9 +6,12 @@
     {{ detale.title }}
     <br />
     {{ detale.price }}
-    <br />
+    <br />Autor postu&nbsp-&nbsp
     {{ detale.author }}
     <br />
     {{ dane }}
+    <br />aktualnie zalogowany&nbsp-&nbsp
+    {{ request.user }}
     <br />
+    
 {% endblock main_content %}

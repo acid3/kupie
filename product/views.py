@@ -1,9 +1,12 @@
 from re import template
 from django.shortcuts import render, get_object_or_404, redirect
 # from matplotlib.style import context
-from .models import CategoryClass, ProductBase, ProductImages
+from product.models import CategoryClass, ProductBase, ProductImages
 from django.db.models import Count
 from .addForm import addProductForm
+from .contactForm import msgForm, msgPostForm
+from privmsg.models import prvMsg
+
 
 # Create your views here.
 
@@ -12,16 +15,18 @@ def productlist(request, category_slug=None):
     category = None
     # productlist = ProductBase.objects.all()
     productlist = ProductBase.objects.order_by("-publication_time")
-    categorylist = CategoryClass.objects.annotate(total_products=Count('productbase'))
+    categorylist = CategoryClass.objects.annotate(
+        total_products=Count('productbase'))
     count = ProductBase.objects.all().count
 
     if category_slug:
-        category = get_object_or_404(CategoryClass, category_slug=category_slug)
+        category = get_object_or_404(
+            CategoryClass, category_slug=category_slug)
         productlist = productlist.filter(category=category)
     # kat_count = CategoryClass.objects.filter
 
     template = 'Product/product_list.html'
-    context = {'product_list': productlist, 
+    context = {'product_list': productlist,
                'category_list': categorylist,
                'category': category,
                'count': count,
@@ -35,7 +40,7 @@ def productdetail(request, product_slug):
     productimages = ProductImages.objects.filter(product=productdetail)
 
     template = 'Product/product_detail.html'
-    context = {'product_detail': productdetail, 
+    context = {'product_detail': productdetail,
                'product_images': productimages,
                }
 
@@ -44,14 +49,29 @@ def productdetail(request, product_slug):
 
 def productcontact(request, product_slug):
     template = 'Product/detail_contact.html'
+    model = prvMsg
     details = ProductBase.objects.get(slug=product_slug)
-    context = {'dane' : '1112223333',
-               'detale' : details,
-                }
+
+    if request.method == 'POST':
+        user_form = msgForm(data=request.POST)
+        user_form2 = msgPostForm(data=request.POST)
+        if user_form.is_valid() and user_form2.is_valid():
+            # pobiera i automatycznie wpisuje do modelu user_id
+            user_form.instance.sender_id = request.user
+            user_form.instance.reciver_id = details.author
+            user_form2.instance.title = details.title
+            user_form.save()
+            return redirect('/products')
+
+    else:
+        user_form = addProductForm()
+
+    context = {'user_form': user_form,
+               'detale': details,
+               }
 
     return render(request, template, context)
-    
-    
+
 
 def addProduct(request):
     if request.method == 'POST':
