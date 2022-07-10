@@ -49,22 +49,45 @@ def productdetail(request, product_slug):
 
 def productcontact(request, product_slug):
     template = 'Product/detail_contact.html'
-    model = prvMsg
+    # model = prvMsg
     details = ProductBase.objects.get(slug=product_slug)
 
     if request.method == 'POST':
         user_form = msgForm(data=request.POST)
         user_form2 = msgPostForm(data=request.POST)
-        if user_form.is_valid() and user_form2.is_valid():
+
+        user_form.instance.sender_id = request.user
+        user_form.instance.reciver_id = details.author
+
+        # user_form.fields["sender_id"].initial = request.user
+        # user_form.fields["reciver_id"].initial = details.author
+
+        # user_form.fields["sender_id"].initial = "admin"
+
+        # user_form.initial["sender_id"] = "admin"
+
+        # user_form.initial["sender_id"] = request.user
+        
+        if user_form.is_valid():
+            # user_form.instance.sender_idcc = request.user
+            # user_form.instance.reciver_id = details.author
+
+            # user_form.fields["sender_id"].initial = request.user
+            # user_form.fields["reciver_id"].initial = details.author
+
+            # user_form.fields["sender_id"].initial = "admin"
+
+            # user_form.initial["sender_id"] = "admin"
+        
             # pobiera i automatycznie wpisuje do modelu user_id
-            user_form.instance.sender_id = request.user
-            user_form.instance.reciver_id = details.author
-            user_form2.instance.title = details.title
+            # user_form.instance.sender_id = request.user
+            # user_form.instance.reciver_id = details.author
+            # user_form2.instance.title = details.title
             user_form.save()
             return redirect('/products')
 
     else:
-        user_form = addProductForm()
+        user_form = msgForm()
 
     context = {'user_form': user_form,
                'detale': details,
