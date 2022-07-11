@@ -6,7 +6,7 @@ from .msg_form import UserForm
 
 
 def RecivedPM(request):
-    msg_rcv = prvMsg.objects.filter(reciver_id=request.user)
+    msg_rcv = prvMsg.objects.filter(reciver_id=request.user).order_by('-sendDate')
 
     template = "privmsg/odebrane.html"
 
