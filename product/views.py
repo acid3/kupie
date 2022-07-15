@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from product.models import CategoryClass, ProductBase, ProductImages
 from django.db.models import Count
 from .addForm import addProductForm
-from .contactForm import msgForm, msgPostForm
+from .contactForm import msgForm
 from privmsg.models import prvMsg
 
 
@@ -49,19 +49,17 @@ def productdetail(request, product_slug):
 
 def productcontact(request, product_slug):
     template = 'Product/detail_contact.html'
-    # model = prvMsg
     details = ProductBase.objects.get(slug=product_slug)
 
     if request.method == 'POST':
         user_form = msgForm(data=request.POST)
-        user_form2 = msgPostForm(data=request.POST)
 
         user_form.instance.sender_id = request.user
         user_form.instance.reciver_id = details.author
-        user_form2.instance.title = details.title
+        user_form.instance.title = details.title
+        user_form.instance.is_open = False
 
         if user_form.is_valid():
-
             user_form.save()
             return redirect('/products')
 

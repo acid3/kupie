@@ -7,9 +7,3 @@ class msgForm(forms.ModelForm):
         model = prvMsg
         # fields = [ 'msg', 'sender_id', 'reciver_id']
         fields = [ 'msg']
-
-class msgPostForm(forms.ModelForm):
-    class Meta():
-        model = ProductBase
-        fields = [ 'title' ]
-

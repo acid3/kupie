@@ -1,0 +1,16 @@
+.div1 {
+    /* border-style: solid; */
+    width: 70%;
+    text-align: left;
+    float: right;
+    background-color: rgb(163, 196, 186);
+
+}
+
+.div2 {
+    width: 28%;
+    /* border-style: solid; */
+    border-color: red;
+    float: right;
+    background-color: rgb(117, 150, 183);
+}

@@ -5,9 +5,7 @@
 {% block main_content %}
     <ul style="list-style-type: none; padding: 0">
         {% for obj in product_list %}
-            {# TODO linijka poniżej do usunięcia #}
-            {% comment %} <li onclick="location.href='/motoryzacja/detail/{{ obj.pk }}';" style="cursor: pointer"> {% endcomment %}
-            <li onclick="location.href='/products/detail/{{ obj.slug }}';"
+             <li onclick="location.href='/products/detail/{{ obj.slug }}';"
                 style="cursor: pointer">
                 <div class="mainLiDiv">
                     <div class="titleListDiv">

@@ -3,18 +3,32 @@
     Odebrane wiadomości
 {% endblock title %}
 {% block main_content %}
-    <br />
-    <br />
-    <a href="/msg/napisz/">Napisz wiadomość</a>
-    <br />
-    <br />
-    <br />
-    <br />
-    {% for obj in msgrcv %}
-        {{ obj.sender_id }}&nbsp-&nbsp{{ obj.sendDate.date }}&nbsp-&nbsp{{ obj.sendDate.time }}
-        <br />
-        {{ obj.msg }}
-        <br />
+    <ul style="list-style-type: none; padding: 0">
+        {% for obj in msgrcv %}
+            <li onclick="location.href='/msg/odebrane/{{ obj.slug }}';"
+                style="cursor: pointer">
+                <div class="mainLiDiv">
+                    <div class="titleListDiv">
+                        <h3>{{ obj.title }}</h3>
+                    </div>
+                    <div class="listLiPrice">
+                        <p>
+                            <strong>{{ obj.sender_id }}</strong>
+                        </p>
+                    </div>
+                    <div style="clear: both">
+                        Nowa&nbsp-&nbsp
+                        {% if not obj.is_open %}
+                            TAK
+                        {% else %}
+                            NIE
+                        {% endif %}
+                    </br>
+                    {{ obj.sendDate }}
+                </div>
+            </div>
+        </li>
         <hr />
     {% endfor %}
+</ul>
 {% endblock main_content %}
