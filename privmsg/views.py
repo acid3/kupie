@@ -44,7 +44,7 @@ def writeMsg(request, msgSlug):
                 user_form.instance.is_open = False
                 user_form.instance.title = detail.title
                 user_form.save()
-
+https://www.youtube.com/watch?v=5GgflscOmW8https://www.youtube.com/watch?v=5GgflscOmW8
         else:
             user_form = msgForm()
 
