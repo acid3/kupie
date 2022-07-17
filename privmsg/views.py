@@ -2,7 +2,7 @@ from re import template
 from django.shortcuts import render, redirect
 # from numpy import product
 from product import contactForm
-
+from django.db.models import Q
 from product.models import ProductBase
 from .models import prvMsg
 from .msg_form import UserForm
@@ -44,7 +44,8 @@ def writeMsg(request, msgSlug):
                 user_form.instance.is_open = False
                 user_form.instance.title = detail.title
                 user_form.save()
-https://www.youtube.com/watch?v=5GgflscOmW8https://www.youtube.com/watch?v=5GgflscOmW8
+                return redirect('/msg/odebrane')
+
         else:
             user_form = msgForm()
 
@@ -57,8 +58,15 @@ https://www.youtube.com/watch?v=5GgflscOmW8https://www.youtube.com/watch?v=5Ggfl
 def readMsg(request, msgSlug):
     template = "privmsg/wiadomosc.html"
     message = prvMsg.objects.get(slug=msgSlug)
+
+    logged_user_msg = prvMsg.objects.filter(Q(reciver_id=request.user) | (Q(sender_id=request.user)))
+    sender_msg = logged_user_msg.filter(Q(sender_id=message.sender_id) | Q(reciver_id=message.sender_id))
+    actual_msg = sender_msg.filter(Q(title=message.title))
+    czat = actual_msg.order_by('-sendDate')
+
     prvMsg.objects.filter(slug=msgSlug).update(is_open=True)
     context = {'message': message,
+               'czat': czat,
                }
 
     return render(request, template, context)
