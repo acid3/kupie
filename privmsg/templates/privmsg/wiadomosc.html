@@ -3,54 +3,20 @@
     Odebrane wiadomości
 {% endblock title %}
 {% block main_content %}
-    <div>
+    <div class="div2">
+        Dotyczy postu - <span style="font-size: 28px; ">{{ message.title }}</span>
+    </div>
+    <div class="div4">
         {% for obj in czat %}
             <div class="div1">
-                <h2>
+                <h3>
                     <b>{{ obj.msg }}</b>
-                </h2>
+                </h3>
                 <div class="div2">{{ obj.sender_id }} - {{ obj.sendDate }}</div>
             </div>
         {% endfor %}
-        <div class="div2">
-            Dotyczy postu
-            <br />
-            <b>{{ message.title }}</b>
-        </div>
-        <div class="div2">
-            Od - <b>{{ message.sender_id }}</b>
+        <div class="div3">
+            <a href='/msg/napisz/{{ message.slug }}'>Odpowiedz</a>
         </div>
     </div>
-    <div>
-        <a href='/msg/napisz/{{ message.slug }}'>Odpowiedz</a>
-    </div>
 {% endblock main_content %}
-{% comment %} {% extends "base.html" %}
-{% block title %}
-    Odebrane wiadomości
-{% endblock title %}
-{% block main_content %}
-    <div>
-        <div class="div1">
-            <h2>
-                <b>{{ message.msg }}</b>
-            </h2>
-            <div class="div2">{{ message.sendDate }}</div>
-        </div>
-        <div class="div2">
-            Dotyczy postu
-            <br />
-            <b>{{ message.title }}</b>
-        </div>
-        <div class="div2">
-            Od - <b>{{ message.sender_id }}</b>
-        </div>
-        <div class="div2">
-            Wysłano - <b>{{ message.sendDate }}</b>
-</div> 
-</div>
-<div>
-<a href='/msg/napisz/{{ message.slug }}'>Odpowiedz</a>
-</div>
-{% endblock main_content %}
-{% endcomment %}

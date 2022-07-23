@@ -1,16 +1,39 @@
 .div1 {
-    /* border-style: solid; */
-    width: 70%;
-    text-align: left;
+    border-style: solid;
+    border-width: thin;
+    display: block;
+    width: 98%;
+    text-align: right;
+    position: relative;
     float: right;
     background-color: rgb(163, 196, 186);
-
 }
 
 .div2 {
-    width: 28%;
+    width: 98%;
     /* border-style: solid; */
+    text-align: center;
+    
+    position: relative;
     border-color: red;
-    float: right;
+    float: left;
     background-color: rgb(117, 150, 183);
+}
+
+.div3 {
+    clear: right;
+    position: relative;
+    float: right;
+    /* bottom: 20px; */
+    border-style: solid;
+    border-color: blue;
+}
+
+.div4 {
+    display: inline-block;
+    clear: left;
+    border: solid red 3px;
+    position: static;
+    width: 98%;
+    height: auto;
 }

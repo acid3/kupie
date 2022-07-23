@@ -62,7 +62,7 @@ def readMsg(request, msgSlug):
     logged_user_msg = prvMsg.objects.filter(Q(reciver_id=request.user) | (Q(sender_id=request.user)))
     sender_msg = logged_user_msg.filter(Q(sender_id=message.sender_id) | Q(reciver_id=message.sender_id))
     actual_msg = sender_msg.filter(Q(title=message.title))
-    czat = actual_msg.order_by('-sendDate')
+    czat = actual_msg.order_by('sendDate')
 
     prvMsg.objects.filter(slug=msgSlug).update(is_open=True)
     context = {'message': message,
