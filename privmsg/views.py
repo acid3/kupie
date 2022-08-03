@@ -21,6 +21,8 @@ from product.contactForm import msgForm
 
 
 # zmiana dla testu pusha dla branchu 'message'
+def test_dla_testu():
+    pass
 
 
 def RecivedPM(request):
