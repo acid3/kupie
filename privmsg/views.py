@@ -20,6 +20,9 @@ from product.contactForm import msgForm
 #     return render(request, template, context)
 
 
+# zmiana dla testu pusha dla branchu 'message'
+
+
 def RecivedPM(request):
     msg_rcv = prvMsg.objects.filter(
         reciver_id=request.user).order_by('-sendDate')
